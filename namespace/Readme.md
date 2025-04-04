@@ -1,15 +1,14 @@
-Great! Here's a **ready-to-publish `README.md`** for your GitHub repo describing the scenario. You can copy and paste it directly into your repository.
-
+In this scenario, we will create 2 namespaces and work with them.
 ---
 
 ```markdown
-# 🔧 Network Namespaces Simulation in Ubuntu
+# Network Namespaces Simulation
 
 This project demonstrates how to simulate two isolated hosts using **network namespaces** on Ubuntu. It sets up two namespaces (`ns1` and `ns2`) and connects them with a **virtual Ethernet (veth) pair**, allowing them to communicate over a virtual network.
 
 ---
 
-## 🧩 Scenario Overview
+## Scenario Overview
 
 We simulate two hosts on the same machine:
 
@@ -74,7 +73,7 @@ You should receive replies — the two namespaces can now communicate!
 
 ---
 
-## 🧹 Cleanup
+## Cleanup
 
 To delete the namespaces and virtual interfaces:
 
@@ -85,14 +84,14 @@ sudo ip netns delete ns2
 
 ---
 
-## 📌 Notes
+## Notes
 
 - This setup is useful for **network simulation**, **container networking**, and **learning Linux networking**.
 - No actual containers or VMs are needed — this works purely with namespaces.
 
 ---
 
-## 📚 Resources
+## Resources
 
 - `ip netns` – Manage Linux network namespaces
 - `ip link` – Show/manipulate network interfaces
@@ -100,7 +99,7 @@ sudo ip netns delete ns2
 
 ---
 
-## 💡 Want More?
+## Want More?
 
 You can extend this project by:
 - Adding NAT to connect a namespace to the internet
@@ -109,9 +108,6 @@ You can extend this project by:
 
 ---
 
-Feel free to fork this and explore more!
 ```
 
 ---
-
-Let me know if you'd like me to create the file for you (`README.md`) or generate a GitHub-compatible `.sh` script to automate it.
