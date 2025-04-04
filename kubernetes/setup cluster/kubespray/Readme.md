@@ -96,9 +96,7 @@ This guide explains how to set up passwordless SSH access between multiple nodes
 
 ### 1. On the node that Docker installed
 
-#### Generate SSH Key Pair
-
-Generate an SSH key pair on Node1:
+Generate SSH Key Pair
 
 ```bash
 ssh-keygen
