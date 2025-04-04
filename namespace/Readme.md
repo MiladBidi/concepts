@@ -103,7 +103,3 @@ You can extend this project by:
 - Using `tc` to simulate latency and bandwidth limits
 
 ---
-
-```
-
----
