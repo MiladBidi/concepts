@@ -86,3 +86,86 @@ ansible-playbook -i /inventory/mycluster/hosts.ini --become --become-user=root c
 ```
 
 ---
+
+
+# Node Setup for Passwordless SSH Access
+
+This guide explains how to set up passwordless SSH access between multiple nodes for your Kubernetes cluster.
+
+## Step-by-Step Instructions
+
+### 1. On the node that Docker installed
+
+#### Generate SSH Key Pair
+
+Generate an SSH key pair on Node1:
+
+```bash
+ssh-keygen
+```
+
+You can press `Enter` for the default file location (`~/.ssh/id_rsa`), and set an optional passphrase. The public key will be stored in `~/.ssh/id_rsa.pub`.
+
+#### Copy the Public Key
+
+Copy the contents of your public key to share with other nodes (Node1, Node2 and Node3):
+
+```bash
+cat ~/.ssh/id_rsa.pub
+```
+
+### 2. On Cluster Nodes
+
+#### Modify SSH Configuration
+
+1. Edit the SSH configuration file (`/etc/ssh/sshd_config`) on Node2 and Node3 to permit key-based authentication:
+
+```bash
+sudo vi /etc/ssh/sshd_config
+```
+
+Ensure the following settings are configured:
+
+```ini
+PermitRootLogin yes
+PubkeyAuthentication yes
+AuthorizedKeysFile      .ssh/authorized_keys .ssh/authorized_keys2
+```
+
+#### Add Public Key to Authorized Keys
+
+2. Copy the public key from Docker Node (obtained in step 1) and append it to the `~/.ssh/authorized_keys` file on cluster nodes.
+
+```bash
+echo "PASTE_DOCKER_NODE_PUBLIC_KEY_HERE" >> ~/.ssh/authorized_keys
+```
+
+Replace `PASTE_DOCKER_NODE_PUBLIC_KEY_HERE` with the actual content of the public key from Docker Node.
+
+#### Restart SSH Service
+
+3. Restart the SSH service to apply the changes:
+
+```bash
+sudo systemctl restart sshd
+```
+
+---
+
+## Verifying Passwordless SSH
+
+Now, you should be able to SSH from Node1 to Node2 and Node3 without entering a password:
+
+```bash
+ssh node2
+ssh node3
+```
+
+---
+
+## Notes
+
+- Ensure that you replace `PASTE_DOCKER_NODE_PUBLIC_KEY_HERE` with the actual contents of the public key generated on Node1.
+- This setup assumes that the docker node is able to SSH into the cluster nodes (Node1, Node2, Node3) without requiring a password.
+
+---
