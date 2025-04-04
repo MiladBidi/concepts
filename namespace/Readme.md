@@ -1,7 +1,5 @@
-In this scenario, we will create 2 namespaces and work with them.
 ---
 # Network Namespaces Simulation
-
 This project demonstrates how to simulate two isolated hosts using **network namespaces** on Ubuntu. It sets up two namespaces (`ns1` and `ns2`) and connects them with a **virtual Ethernet (veth) pair**, allowing them to communicate over a virtual network.
 
 ---
