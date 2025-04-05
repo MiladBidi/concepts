@@ -8,9 +8,9 @@ This guide shows how to interact directly with the Kubernetes API using `curl` b
 
 ---
 
-## 📦 Kubernetes API Endpoint Formats
+## Kubernetes API Endpoint Formats
 
-### 🧪 Pods
+### Pods
 
 - **List Pods**
   ```
@@ -32,7 +32,7 @@ This guide shows how to interact directly with the Kubernetes API using `curl` b
   DELETE /api/v1/namespaces/<namespace>/pods/<pod-name>
   ```
 
-### 🕒 CronJobs
+### CronJobs
 
 - **List CronJobs**
   ```
@@ -56,13 +56,16 @@ This guide shows how to interact directly with the Kubernetes API using `curl` b
 
 ---
 
-## 🔐 Create a ServiceAccount with API Access
+## Create a ServiceAccount with API Access
 
 ```bash
-# 1. Create the ServiceAccount
+### 1. Create the ServiceAccount
 kubectl create serviceaccount my-api-client
+```
 
-# 2. Create a Role for read access to Pods
+
+### 2. Create a Role for read access to Pods
+```bash
 cat <<EOF | kubectl apply -f -
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -74,8 +77,10 @@ rules:
     resources: ["pods"]
     verbs: ["get", "list", "watch"]
 EOF
+```
 
-# 3. Bind the Role to the ServiceAccount
+### 3. Bind the Role to the ServiceAccount
+```bash
 kubectl create rolebinding pod-reader-binding \
   --role=pod-reader \
   --serviceaccount=default:my-api-client \
@@ -84,36 +89,36 @@ kubectl create rolebinding pod-reader-binding \
 
 ---
 
-## 🧪 Generate a Token (Kubernetes v1.24+)
+## Generate a Token (Kubernetes v1.24+)
 
 ```bash
 # Generate a short-lived token using the TokenRequest API
-kubectl create token my-api-client
+TOKEN=$(kubectl create token my-api-client)
 ```
 
 Save the output token — you’ll use it for authentication.
 
 ---
 
-## 🔄 Curl Examples
+## Curl Examples
 
 Replace `<TOKEN>` and `<APISERVER>` accordingly:
 
-### ✅ List Pods
+### List Pods
 ```bash
 curl -k -H "Authorization: Bearer <TOKEN>" \
      https://<APISERVER>/api/v1/namespaces/default/pods
 ```
 
-### ✅ Get Specific CronJob
+### Get Specific CronJob
 ```bash
-curl -k -H "Authorization: Bearer <TOKEN>" \
+curl -k -H "Authorization: Bearer $TOKEN" \
      https://<APISERVER>/apis/batch/v1/namespaces/default/cronjobs/hello-cron
 ```
 
 ---
 
-## 📍 Discovering APIs
+## Discovering APIs
 
 ```bash
 kubectl get --raw /api | jq
@@ -123,38 +128,7 @@ kubectl api-resources
 
 ---
 
-## 📁 Optional: Pod Manifest Example (`pod.json`)
-```json
-{
-  "apiVersion": "v1",
-  "kind": "Pod",
-  "metadata": {
-    "name": "curl-demo"
-  },
-  "spec": {
-    "containers": [
-      {
-        "name": "curl-container",
-        "image": "busybox",
-        "args": ["sleep", "3600"]
-      }
-    ],
-    "restartPolicy": "Never"
-  }
-}
-```
-
-Use this to test POST with:
-```bash
-curl -k -X POST -H "Authorization: Bearer <TOKEN>" \
-     -H "Content-Type: application/json" \
-     -d @pod.json \
-     https://<APISERVER>/api/v1/namespaces/default/pods
-```
-
----
-
-## 📌 Notes
+## Notes
 
 - Use `https://kubernetes.default.svc` when running from inside the cluster.
 - For external access, use the master IP or load balancer + port 6443.
@@ -162,7 +136,7 @@ curl -k -X POST -H "Authorization: Bearer <TOKEN>" \
 
 ---
 
-## 📚 References
+## References
 
 - [Kubernetes API Docs](https://kubernetes.io/docs/reference/generated/kubernetes-api/)
 - [RBAC Authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
