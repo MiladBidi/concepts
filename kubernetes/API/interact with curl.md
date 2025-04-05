@@ -6,53 +6,11 @@
 
 This guide shows how to interact directly with the Kubernetes API using `curl` by creating a ServiceAccount, generating a token, and making authenticated API calls — with real examples for **Pods** and **CronJobs**.
 
----
+Here’s the Kubernetes API general structure for cronjob:
 
-## Kubernetes API Endpoint Formats
-
-### Pods
-
-- **List Pods**
-  ```
-  GET /api/v1/namespaces/<namespace>/pods
-  ```
-
-- **Get Specific Pod**
-  ```
-  GET /api/v1/namespaces/<namespace>/pods/<pod-name>
-  ```
-
-- **Create a Pod**
-  ```
-  POST /api/v1/namespaces/<namespace>/pods
-  ```
-
-- **Delete a Pod**
-  ```
-  DELETE /api/v1/namespaces/<namespace>/pods/<pod-name>
-  ```
-
-### CronJobs
-
-- **List CronJobs**
-  ```
-  GET /apis/batch/v1/namespaces/<namespace>/cronjobs
-  ```
-
-- **Get Specific CronJob**
-  ```
-  GET /apis/batch/v1/namespaces/<namespace>/cronjobs/<cronjob-name>
-  ```
-
-- **Create a CronJob**
-  ```
-  POST /apis/batch/v1/namespaces/<namespace>/cronjobs
-  ```
-
-- **Delete a CronJob**
-  ```
-  DELETE /apis/batch/v1/namespaces/<namespace>/cronjobs/<cronjob-name>
-  ```
+```bash
+https://<kube-apiserver>:<port>/api/batch/v1/namespaces/<namespace>/cronjobs/<name>
+```
 
 ---
 
