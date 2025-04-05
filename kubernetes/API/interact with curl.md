@@ -1,11 +1,8 @@
-Awesome — here’s a clean, well-structured `README.md` you can drop into a GitHub repo to document everything we discussed: Kubernetes API access via `curl` using a `ServiceAccount`, plus full examples for **Pods** and **CronJobs**.
 
 ---
 
-### 📁 `README.md`
 
-```markdown
-# 🔐 Access Kubernetes API via Curl Using ServiceAccounts
+# Access Kubernetes API via Curl Using ServiceAccounts 
 
 This guide shows how to interact directly with the Kubernetes API using `curl` by creating a ServiceAccount, generating a token, and making authenticated API calls — with real examples for **Pods** and **CronJobs**.
 
