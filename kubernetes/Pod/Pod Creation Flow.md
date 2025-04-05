@@ -55,7 +55,12 @@
 
 ---
 
-## 👥 Now Compare That to a **Deployment**
+![image](https://github.com/user-attachments/assets/a7220737-b5f0-4502-9aa3-33eb4b11c012)
+
+
+---
+
+##  Now Compare That to a **Deployment**
 
 When using a **Deployment**, you're not directly creating a Pod — you're creating a **higher-level controller**, and the controller manages Pods.
 
