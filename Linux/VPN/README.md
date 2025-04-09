@@ -5,23 +5,23 @@ It’s based on real-world troubleshooting and discussions, tailored for a setup
 
 ## Table of Contents
 
-Overview (#overview)
+Overview
 
-Network Configuration (#network-configuration)
+Network Configuration
 
-OpenVPN Server Setup (#openvpn-server-setup)
+OpenVPN Server Setup
 
-Routing and NAT (#routing-and-nat)
+Routing and NAT
 
-Split Tunneling vs Full Tunneling (#split-tunneling-vs-full-tunneling)
+Split Tunneling vs Full Tunneling
 
-Bypassing Censorship (#bypassing-censorship)
+Bypassing Censorship
 
-How the VPN Tunnel Works (#how-the-vpn-tunnel-works)
+How the VPN Tunnel Works
 
-Key Takeaways (#key-takeaways)
+Key Takeaways
 
-Testing and Troubleshooting (#testing-and-troubleshooting)
+Testing and Troubleshooting
 
 Overview
 This guide covers setting up an OpenVPN server to:
@@ -34,6 +34,8 @@ Understand the flow of packets, NAT, and routing in a VPN setup.
 The server has two interfaces:
 
 ens192: Internal network (10.20.20.22/24).
+
 ens224: Public internet (70.50.50.30/29).
+
 The VPN tunnel uses the 10.8.0.0/24 range, with the server at 10.8.0.1 and clients (e.g., laptop) at 10.8.0.6.
 
