@@ -20,6 +20,9 @@ Create a namespace and a dummy secret:
 
 ```bash
 kubectl create ns demo-secrets
+```
+
+```bash
 kubectl create secret generic github-token \
   --from-literal=token=ghp_example1234567890 \
   -n demo-secrets
