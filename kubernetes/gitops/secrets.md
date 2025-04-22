@@ -2,7 +2,6 @@
 
 This is a minimal and practical walkthrough to demonstrate how Kubernetes stores secrets in etcd — first in plain text, then encrypted — by enabling **Encryption at Rest**.
 
----
 
 ## Prerequisites
 
