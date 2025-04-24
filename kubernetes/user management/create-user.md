@@ -1,3 +1,7 @@
+# Create User
+
+## Step 1 : Genereate Credentials
+
 Generate Private Key
 ```bash
 openssl genrsa -out milad.key 2048
@@ -27,16 +31,22 @@ kubectl config view
 kubectl config get-contexts
 ```
 
+## Step 2 : Check Access Before Grant
+
 Switch to New Context
+
 ```bash
 kubectl config use-context milad-context
 ```
 
 Check to get pods:
+
 ```bash
 kubectl config get-contexts
 kubectl get pods
 ```
+
+## Step 3 : Grant Access
 
 Create Role and RoleBinding
 
@@ -77,6 +87,8 @@ kubectl apply -f milad-pod-reader-role.yaml
 ```bash
 kubectl apply -f milad-pod-reader-binding.yaml
 ```
+
+check again
 
 ```bash
 kubectl config use-context milad-context
