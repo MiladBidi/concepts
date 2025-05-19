@@ -1,5 +1,23 @@
 CVE: Common Vulnerabilities and Exposures \
-Rescue Mode \
+### Rescue Mode 
+
+1. Download iso
+```bash
+SystemRescue Main Page:
+https://www.system-rescue.org/Download/
+
+download link:
+https://sourceforge.net/projects/systemrescuecd/files/sysresccd-x86/12.00/systemrescue-12.00-amd64.iso/download
+```
+
+2. Mount this ISO as a CD/DVD Drive into VM
+* in vmware workstation: go to settings of VM > CD/DVD > Browse ISO File
+
+3. Turn off and Power on VM > Press ESC > Enter to BIOS Menu > Select Boot From CD/DVD
+4. you must be here
+
+![image](https://github.com/user-attachments/assets/63ccfd52-7fa5-401d-8380-15e888899cf8)
+
 ```bash
 /etc/default/grub
 ```
