@@ -6,3 +6,9 @@
 * Find the boot device
 * Load the bootloader from the boot sector
 
+3. BL
+* Display boot menu
+* Load kernel into memory
+* Provide information needed by kernel (initrd/initramfs)
+* Transfer control to kernel
+
